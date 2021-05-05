@@ -1,19 +1,33 @@
 <?php 
   class Database {
-    // DB Params (to connect)
+/*     // DB Params (to connect to local host)
     private $host = 'localhost';
     private $db_name = 'quotes_final';
     private $username = 'root';
-    private $password = '';
+    private $password = ''; */
     //represents connection
+    
+    
     private $conn;
 
     // DB Connect
     public function connect() {
-      $this->conn = null;
+        $url = getenv('mysql://b14glho9exaaatls:dudegci2oe5zgx9s@frwahxxknm9kwy6c.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/l1q86343j7vkzl0r');
+        $dbparts = parse_url($url);
+        
+        $hostname = $dbparts['host'];
+        $username = $dbparts['user'];
+        $password = $dbparts['pass'];
+        $database = ltrim($dbparts['path'],'/');
+      
+        $dsn = "mysql:host={$hostname};dbname={$database}";
+       
+        $this->conn = null;
 
       try { 
-        $this->conn = new PDO('mysql:host=' . $this->host . ';dbname=' . $this->db_name, $this->username, $this->password);
+        /* $this->conn = new PDO('mysql:host=' . $this->host . ';dbname=' . $this->db_name, $this->username, $this->password); */
+        $this->conn = new PDO($dsn, $username, $password);
+
         //catch error mode
         $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
       } catch(PDOException $e) {
