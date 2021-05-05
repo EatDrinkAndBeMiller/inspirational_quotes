@@ -23,7 +23,7 @@
         $password = $dbparts['pass'];
         $database = ltrim($dbparts['path'],'/');
       
-        $dsn = `mysql:host={$hostname};dbname={$database}`;
+        $dsn = "mysql:host={$hostname};dbname={$database}";
        
         $this->conn = null;
 
