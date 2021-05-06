@@ -25,7 +25,11 @@ class Author {
         //execute query
         $stmt->execute();
 
+        if (!empty($stmt)) {
         return $stmt;
+        } else {
+            
+        }
     }
 
     //read a single author & id
