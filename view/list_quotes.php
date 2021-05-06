@@ -77,7 +77,7 @@
         </table>
     <?php } ?>
 </div>
-
+<br><br><br>
 
     <!-- Compressed JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js" 

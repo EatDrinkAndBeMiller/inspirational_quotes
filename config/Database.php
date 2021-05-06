@@ -1,5 +1,11 @@
 <?php 
   class Database {
+/*     // DB Params (to connect to local host)
+    private $host = 'localhost';
+    private $db_name = 'quotes_final';
+    private $username = 'root';
+    private $password = ''; */
+    
     private $conn;
 
     // DB Connect
@@ -18,7 +24,8 @@
 
       try { 
         $this->conn = new PDO($dsn, $username, $password);
-        
+        /* $this->conn = new PDO('mysql:host=' . $this->host . ';dbname=' . $this->db_name, $this->username, $this->password); */
+
       } catch(PDOException $e) {
         echo 'Connection Error: ' . $e->getMessage();
       }
@@ -27,18 +34,7 @@
     }
   }
 
-  //catch error mode
-        /* $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); */
-        /* $this->conn = new PDO('mysql:host=' . $this->host . ';dbname=' . $this->db_name, $this->username, $this->password); */
+ 
+        
 
 
-        /*     // DB Params (to connect to local host)
-    private $host = 'localhost';
-    private $db_name = 'quotes_final';
-    private $username = 'root';
-    private $password = ''; */
-    
-    /* private $host = 'frwahxxknm9kwy6c.cbetxkdyhwsb.us-east-1.rds.amazonaws.com';
-    private $db_name = 'l1q86343j7vkzl0r';
-    private $username = 'b14glho9exaaatls';
-    private $password = 'dudegci2oe5zgx9s'; */
