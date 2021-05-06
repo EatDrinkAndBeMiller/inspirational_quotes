@@ -24,24 +24,14 @@ $quote->id = $id;
     }
 
 //call read method
-$result = $quote->read_single();
-$num = $result->rowCount();
+$quote->read_single();
 
-if ($num > 0) {
+$quote_arr = array(
+        'id' => $quote->id,
+        'quote' => $quote->quote,
+        'author' => $quote->author,
+        'category' => $quote->category
+    );
 
-    $quote_arr = array(
-            'id' => $quote->id,
-            'quote' => $quote->quote,
-            'author' => $quote->author,
-            'category' => $quote->category
-        );
-
-    //Turn to JSON & output
-    echo json_encode($quote_arr);
-    
-    } else {
-        //no quote to match
-        echo json_encode(
-            array('message' => 'No quote matches those parameters')
-        );
-    }
+//Turn to JSON & output
+echo json_encode($quote_arr);
