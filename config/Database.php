@@ -1,10 +1,5 @@
 <?php 
   class Database {
-/*     // DB Params (to connect to local host)
-    private $host = 'localhost';
-    private $db_name = 'quotes_final';
-    private $username = 'root';
-    private $password = ''; */
     
     private $conn;
 
@@ -24,8 +19,7 @@
 
       try { 
         $this->conn = new PDO($dsn, $username, $password);
-        /* $this->conn = new PDO('mysql:host=' . $this->host . ';dbname=' . $this->db_name, $this->username, $this->password); */
-
+        
       } catch(PDOException $e) {
         echo 'Connection Error: ' . $e->getMessage();
       }
