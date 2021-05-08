@@ -54,9 +54,7 @@
         </div>
     </form>
 
-    <?php if (empty($quotes)) { ?>
-        <h4 class="text-center">No matching quotes found.</h4>
-    <?php } else { ?>
+    <?php if ($quotes) { ?>
         <table class="stack table-scroll">
             <thead>
                 <tr>
@@ -75,6 +73,8 @@
                 <?php endforeach ?>
             </tbody>
         </table>
+    <?php } else { ?>
+        <h4 class="text-center">No matching quotes found.</h4>
     <?php } ?>
     <br><br><br>
 </div>
