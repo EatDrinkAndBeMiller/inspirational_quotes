@@ -29,34 +29,24 @@ class Quote {
 
          if ($this->limit) { 
             $query = $query . " LIMIT ?";
-
-            $stmt = $this->conn->prepare($query);
-            $stmt->bindValue(1, $this->limit, PDO::PARAM_INT);
         
         } else if ($this->authorId && $this->categoryId){
             $query = $query . " WHERE q.authorId = :authorId 
                                 AND q.categoryId = :categoryId";
-            
-            $stmt = $this->conn->prepare($query);
-            $stmt->bindParam(':authorId', $this->authorId);
-            $stmt->bindParam(':categoryId', $this->categoryId);
         
         } else if ($this->authorId) {
             $query = $query . " WHERE q.authorId = :authorId";
-            
-            $stmt = $this->conn->prepare($query);
-            $stmt->bindParam(':authorId', $this->authorId);
         
         } else if ($this->categoryId) {
             $query = $query . " WHERE q.categoryId = :categoryId";
-            
-            $stmt = $this->conn->prepare($query);
-            $stmt->bindParam(':categoryId', $this->categoryId);
-        
-        } else {
-            $stmt = $this->conn->prepare($query);
         }
-    
+
+        $stmt = $this->conn->prepare($query);
+
+        if ($this->limit) { $stmt->bindValue(1, $this->limit, PDO::PARAM_INT); }
+        if ($this->authorId) { $stmt->bindParam(':authorId', $this->authorId); }
+        if ($this->categoryId) { $stmt->bindParam(':categoryId', $this->categoryId); }
+
         $stmt->execute();
 
         return $stmt;
